@@ -1,0 +1,39 @@
+/* Global Style Start */
+* {
+    font-size: 17px ;
+  }
+  /* Global Style End */
+  
+  /* Sidebar Start */
+  .sidenav {
+    height: 100%;
+    width: 300px;
+    position: fixed;
+    background-color: #111;
+    overflow-x: hidden;
+    transition: 0.5s;
+  }
+  .list-group .list-group-item {
+    margin: 5px 5px 0px 5px; 
+    background: #e3e3e3;
+  }
+  .list-group-item:hover {
+    background: lightblue;
+  }
+  .list-group-item:active {
+    background: green;
+  }
+  /* Sidebar End */
+  
+  /* Main Container Start */
+  #main {
+   margin-left: 300px;
+   padding: 10px;
+   transition: 0.5s;
+  }
+  /* Main Container End */
+
+  .valid-text {
+    color: red;
+    font-size: 15px;
+  }
