@@ -21,7 +21,7 @@ document.getElementById("btnAdd").onclick = () => {
     case "Student":
       let student = new Student();
       //console.log(student);
-      if (validPeople(student)) {
+      if (validPeople(student, list.arrPerson)) {
         list.insertPerson(student);
         list.renderList();
         document.getElementById("btnClose").click();
@@ -30,7 +30,7 @@ document.getElementById("btnAdd").onclick = () => {
     case "Employee":
       let employee = new Employee();
       //console.log(employee);
-      if (validPeople(employee)) {
+      if (validPeople(employee, list.arrPerson)) {
         list.insertPerson(employee);
         list.renderList();
         document.getElementById("btnClose").click();
@@ -39,7 +39,7 @@ document.getElementById("btnAdd").onclick = () => {
     case "Customer":
       let customer = new Customer();
       //console.log(customer);
-      if (validPeople(customer)) {
+      if (validPeople(customer, list.arrPerson)) {
         list.insertPerson(customer);
         list.renderList();
         document.getElementById("btnClose").click();
@@ -47,7 +47,7 @@ document.getElementById("btnAdd").onclick = () => {
       break;
     default:
       let people = new People();
-      validPeople(people);
+      validPeople(people, list.arrPerson);
     //console.log(people);
   }
   //document.getElementById("btnClose").click();
@@ -61,7 +61,7 @@ document.getElementById("btnClose").onclick = () => {
   document.getElementById("inputType").disabled = false;
   document.getElementById("btnAdd").style.display = "inline-block";
   document.getElementById("btnEdit").style.display = "none";
-  let validArr = document.querySelectorAll('.valid-text');
+  let validArr = document.querySelectorAll(".valid-text");
   for (let field of validArr) {
     field.style.display = "none";
   }
@@ -72,25 +72,30 @@ document.getElementById("btnEdit").onclick = () => {
   switch (value) {
     case "Student":
       let student = new Student();
-      //console.log(student);
-
-      list.editPerson(student);
+      if (validPeople(student)) {
+        list.editPerson(student);
+        document.getElementById("btnClose").click();
+      }
       break;
     case "Employee":
       let employee = new Employee();
-      //console.log(employee);
-      list.editPerson(employee);
+      if (validPeople(employee)) {
+        list.editPerson(employee);
+        document.getElementById("btnClose").click();
+      }
       break;
     case "Customer":
       let customer = new Customer();
-      //console.log(customer);
-      list.editPerson(customer);
+      if (validPeople(customer)) {
+        list.editPerson(customer);
+        document.getElementById("btnClose").click();
+      }
       break;
     default:
       let people = new People();
     //console.log(people);
   }
-  document.getElementById("btnClose").click();
+  
 };
 document.getElementById("filter").onchange = () => {
   let { value } = event.target;

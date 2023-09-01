@@ -40,7 +40,6 @@ let getValidArray = (people) => {
 
 let checkValidEmpty = (people) => {
     let newArrValid = getValidArray(people);
-    console.log(newArrValid);
     let valid = true;
     for(data of newArrValid) {
         let inputForm = Object.keys(data)[0];
@@ -102,6 +101,22 @@ let checkValidId = (people) => {
             document.getElementById('validId').style.display = 'none';
             valid = true;
         }
+    }
+    return valid;
+}
+let checkValidSameId =(people, arr) =>{
+    let valid = false;
+    if (checkValidId(people)) {
+      if (arr.some((item) => people.inputId === item.inputId)) {
+        document.getElementById("validId").innerHTML =
+          "Id existed! Input another Id";
+        document.getElementById("validId").style.display = "block";
+        valid = false;
+      } else {
+        document.getElementById("validId").innerHTML = "";
+        document.getElementById("validId").style.display = "none";
+        valid = true;
+      }
     }
     return valid;
 }
@@ -198,14 +213,17 @@ function checkValidInvoice(people) {
     return valid;
 }
 
-let validPeople = (people) =>{
+let validPeople = (people,arr = undefined) =>{
     let valid;
     let validJob;
     // Basic valid
     let validEmpty = checkValidEmpty(people);
     let validEmail = checkValidEmail(people);
     let validName = checkValidName(people);
+    
     let validId = checkValidId(people);
+    let validSameId =(arr)?checkValidSameId(people,arr):true;
+    
 
     switch (people.inputType) {
         case "Student":
@@ -228,6 +246,6 @@ let validPeople = (people) =>{
       }
 
     
-    valid = validEmpty && validEmail && validName && validId && validJob;
+    valid = validEmpty && validSameId && validEmail && validName && validId && validJob;
     return valid;
 }

@@ -135,16 +135,16 @@ class ListPerson {
     }
     sortAscending = () => {
         this.arrPerson.sort((person1,person2) => {
-            let a = person1.inputId.toLowerCase();
-            let b = person2.inputId.toLowerCase();
+            let a = person1.inputName.toLowerCase();
+            let b = person2.inputName.toLowerCase();
             return a === b ? 0 : a < b ? 1 : -1;
         })
         this.renderList();
     }
     sortDescending = () => {
         this.arrPerson.sort((person1,person2) => {
-            let a = person1.inputId.toLowerCase();
-            let b = person2.inputId.toLowerCase();
+            let a = person1.inputName.toLowerCase();
+            let b = person2.inputName.toLowerCase();
             return a === b ? 0 : a > b ? 1 : -1;
         })
         this.renderList();
